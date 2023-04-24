@@ -9,7 +9,7 @@ const profile = () => {
   return (
     <View className="flex-1 items-center justify-centerflex-1 items-center justify-center bg-white">
       <Text className="text-red-500 text-2xl font-bold">
-        Hello {params.name} {params.surname}
+        Hello {params.name} {params.surname} (@{params.username})
       </Text>
       {/* <Link href="/">Go to homepage</Link> */}
       <Button title="Go Back" onPress={() => router.back()} />

@@ -1,7 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Link } from 'expo-router';
+import { useEffect, useState } from 'react';
 
 export default function Page() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const data = fetch('https://jsonplaceholder.typicode.com/users')
+        .then((res) => console.log(res.json))
+        .then((res) => res.json());
+      setUsers(data);
+    };
+    fetchUsers();
+  }, []);
+  console.log(users);
   return (
     <View className="flex-1 items-center justify-center">
       <View>
@@ -9,9 +21,9 @@ export default function Page() {
         <Text style={styles.subtitle}>This is the first page of your app.</Text>
         {/* <Link href="/profile?name=Rawitch&surname=Payakkawan" className="mt-2"> */}
         {/* ได้เหมือนกันแต่แบบล่าง code จะมีระเยียบและอ่านได้ง่ายกว่า */}
-        <Link
+        {/* <Link
           href={{
-            pathname: '/profile',
+            pathname: '/mixrw',
             params: { name: 'Rawitch', surname: 'Payakkawan' },
           }}
           className="mt-2"
@@ -19,7 +31,7 @@ export default function Page() {
           <Text className="text-blue-500 text-3xl font-bold">
             Go to Profile
           </Text>
-        </Link>
+        </Link> */}
       </View>
     </View>
   );
